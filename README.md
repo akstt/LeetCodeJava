@@ -45,7 +45,7 @@
    
 # 算法
 一些常用算法
-1. [排序算法](algorithms/Sort.java)
+1. [排序算法](src/algorithms/Sort.java)
    1. 冒泡排序
    2. 插入排序 
    3. 希尔排序
