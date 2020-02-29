@@ -1,8 +1,6 @@
 package algorithms;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
 
 public class Sort {
 
@@ -299,55 +297,106 @@ public class Sort {
             }
         }
     }
-//    public static void main(String[] args) {
-//        int[] array = new int[217];
-//        Random r = new Random();
-//        for (int i = 0; i <array.length; i++){
-//            array[i] = r.nextInt(100) - 50;
-//        }
-//
-//        var sort = new Sort();
-//
-//        System.out.println("bubbleSort");
-//        sort.bubbleSort(array);
-//        System.out.println(Arrays.toString(array));
-//        System.out.println(sort.ifSort(array));
-//
-//        sort.shuffle(array);
-//        System.out.println("insertSort");
-//        sort.insertSort(array);
-//        System.out.println(Arrays.toString(array));
-//        System.out.println(sort.ifSort(array));
-//
-//        sort.shuffle(array);
-//        System.out.println("selectSort");
-//        sort.selectSort(array);
-//        System.out.println(Arrays.toString(array));
-//        System.out.println(sort.ifSort(array));
-//
-//        sort.shuffle(array);
-//        System.out.println("shellSort");
-//        sort.shellSort(array);
-//        System.out.println(Arrays.toString(array));
-//        System.out.println(sort.ifSort(array));
-//
-//        sort.shuffle(array);
-//        System.out.println("HeapSort");
-//        sort.heapSort(array);
-//        System.out.println(Arrays.toString(array));
-//        System.out.println(sort.ifSort(array));
-//
-//        sort.shuffle(array);
-//        System.out.println("MergeSort");
-//        sort.mergeSort(array);
-//        System.out.println(Arrays.toString(array));
-//        System.out.println(sort.ifSort(array));
-//
-//        sort.shuffle(array);
-//        System.out.println("QuickSort");
-//        sort.quickSort(array);
-//        System.out.println(Arrays.toString(array));
-//        System.out.println(sort.ifSort(array));
-//
-//    }
+
+    // 基数排序 次位优先 范围0-999
+    public void radixSortLSD(int[] arraySort){
+        /**
+         * 基数排序 次位优先
+         * 平均时间复杂度O(p(n+b))
+         * 最差时间复杂度O(p(n+b))
+         * 额外空间复杂度O(n+b)
+         * 稳定
+         * @param arraySort 需要排序的整数数组
+         */
+        int num_divisor_1 = 10;
+        int num_divisor_2 = 1;
+        while (num_divisor_1 <= 1000){
+            List[] buckets = buildBuckets(10);
+            for (int num: arraySort){
+                int indexBucket = num % num_divisor_1;
+                indexBucket = indexBucket / num_divisor_2;
+                buckets[indexBucket].add(num);
+            }
+            int i = 0;
+            for (List bucket: buckets){
+                for (Object num: bucket){
+                    arraySort[i] = (int) num;
+                    i += 1;
+                }
+            }
+            num_divisor_2 = num_divisor_1;
+            num_divisor_1 *= 10;
+        }
+
+    }
+
+    private List[] buildBuckets(int n){
+        List[] buckets = new List[n];
+        for (int i = 0; i<n; i++){
+            List bucket = new ArrayList<>();
+            buckets[i] = bucket;
+        }
+        return buckets;
+    }
+    public static void main(String[] args) {
+        int[] array = new int[217];
+        Random r = new Random();
+        for (int i = 0; i <array.length; i++){
+            array[i] = r.nextInt(100) - 50;
+        }
+
+        var sort = new Sort();
+
+        System.out.println("bubbleSort");
+        sort.bubbleSort(array);
+        System.out.println(Arrays.toString(array));
+        System.out.println(sort.ifSort(array));
+
+        sort.shuffle(array);
+        System.out.println("insertSort");
+        sort.insertSort(array);
+        System.out.println(Arrays.toString(array));
+        System.out.println(sort.ifSort(array));
+
+        sort.shuffle(array);
+        System.out.println("selectSort");
+        sort.selectSort(array);
+        System.out.println(Arrays.toString(array));
+        System.out.println(sort.ifSort(array));
+
+        sort.shuffle(array);
+        System.out.println("shellSort");
+        sort.shellSort(array);
+        System.out.println(Arrays.toString(array));
+        System.out.println(sort.ifSort(array));
+
+        sort.shuffle(array);
+        System.out.println("HeapSort");
+        sort.heapSort(array);
+        System.out.println(Arrays.toString(array));
+        System.out.println(sort.ifSort(array));
+
+        sort.shuffle(array);
+        System.out.println("MergeSort");
+        sort.mergeSort(array);
+        System.out.println(Arrays.toString(array));
+        System.out.println(sort.ifSort(array));
+
+        sort.shuffle(array);
+        System.out.println("QuickSort");
+//        int[] array2 = new int[100];
+//        Arrays.fill(array2, 10);
+        sort.quickSort(array);
+        System.out.println(Arrays.toString(array));
+        System.out.println(sort.ifSort(array));
+
+        int[] array1 = new int[217];
+        for (int i = 0; i <array.length; i++){
+            array1[i] = r.nextInt(1000);
+        }
+        System.out.println("radixSort");
+        sort.radixSortLSD(array1);
+        System.out.println(Arrays.toString(array1));
+        System.out.println(sort.ifSort(array1));
+    }
 }
