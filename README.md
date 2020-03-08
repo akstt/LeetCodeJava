@@ -54,3 +54,8 @@
    6. 归并排序
    7. 快速排序
    8. 基数排序 
+2. [字符串匹配算法](src/algorithms/StringMatch.java)
+    1. 朴素算法（暴力匹配算法）
+    2. KMP算法
+    3. BM算法
+    4. Sunday算法
