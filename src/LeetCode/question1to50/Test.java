@@ -2,6 +2,8 @@ package LeetCode.question1to50;
 
 public class Test {
     public static void main(String[] args) {
-        System.out.println(Math.log(3));
+        int a = 1;
+        System.out.println(a++);
+        System.out.println(++a);
     }
 }

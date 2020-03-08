@@ -160,6 +160,7 @@ public class StringMatch {
                     */
                     // 好后缀
                     if (indexTextMove == indexPattern + 1){
+                        indexTextMove = pattern.length();
                         for (int indexPostfix : goodPostfix){
                             if (indexPostfix > indexPattern){
                                 indexTextMove = indexPostfix;
@@ -254,6 +255,6 @@ public class StringMatch {
         var x = new StringMatch();
         String text = "abcabcabe";
         String pattern = "abcabe";
-        System.out.println(x.Sunday(text, pattern));
+        System.out.println(x.BM(text, pattern));
     }
 }
