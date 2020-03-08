@@ -34,7 +34,7 @@ public class StringMatch {
     /**
      * KMP算法
      * 平均时间复杂度O(n)
-     * 空间复杂度O(1)
+     * 空间复杂度O(m)
      * @param text 是一个长度为n的字符串
      * @param pattern 是一个长度为m的字符串
      * @return pattern在text第一次出现的索引位置
@@ -104,7 +104,7 @@ public class StringMatch {
     /**
      * BM算法
      * 平均时间复杂度O(n)
-     * 空间复杂度O(1)
+     * 空间复杂度O(m)
      * @param text 是一个长度为n的字符串
      * @param pattern 是一个长度为m的字符串
      * @return pattern在text第一次出现的索引位置
